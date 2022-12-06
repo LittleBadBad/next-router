@@ -2,7 +2,7 @@
 
 /* eslint-env jest */
 
-const {router} = require('next-compose-router')
+const {router} = require('..')
 const assert = require('assert')
 
 function wait(ms) {

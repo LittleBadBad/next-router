@@ -1,6 +1,6 @@
 {
   "name": "next-compose-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "create koa-router like next.js handler",
   "main": "index.js",
   "repository": "https://github.com/LittleBadBad/next-router",
