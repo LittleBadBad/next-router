@@ -24,11 +24,15 @@ preprocessing separately and flexibly. So I write this toolkit to handle this
 Create a next handler composed with multi middlewares
 
 ```js
+import {router} from "next-compose-router"
+
+// usage
 export default router(checkAuth, checkParams, (req, res) => {
     // write handler here
     res.send("success")
 })
 
+// others
 export const FORBIDDEN = {message: "forbidden", status: 403}
 
 export const BAD_REQUEST: IError = {message: "bad request", status: 400}
@@ -58,6 +62,8 @@ async function checkParams(req, res, next) {
 Used to define self error handler
 
 ```js
+import {nextCompose} from "next-compose-router"
+
 // default
 const router = nextCompose((req, res, err) => {
     throw err
