@@ -1,9 +1,9 @@
 import {NextApiRequest, NextApiResponse} from "next";
 
 export type IMiddleware<T = any> =
-    (req?: NextApiRequest,
-     res?: NextApiResponse<T>,
-     next?: IMiddleware) => Promise<any> | any
+    (req: NextApiRequest,
+     res: NextApiResponse<T>,
+     next: Function) => Promise<any> | any
 
 export type IHandleError = (req: NextApiRequest,
                             res: NextApiResponse, err: any) => any
@@ -25,7 +25,7 @@ export const nextCompose: INextCompose =
                 async function dispatch(i) {
                     if (i <= index) return handleError(req, res, new Error('next() called multiple times'))
                     index = i
-                    let fn = middlewares[i]
+                    let fn: Function = middlewares[i]
                     if (i === middlewares.length) fn = next
                     if (!fn) return
                     try {
